@@ -82,6 +82,15 @@ class UsersController {
       next(err);
     }
   }
+  async getUserArticles(req, res, next) {
+    try {
+      const userId = req.params.userId;
+      const articles = await articlesService.getUserArticles(userId);
+      res.json(articles);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new UsersController();
